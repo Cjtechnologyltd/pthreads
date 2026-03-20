@@ -1,6 +1,6 @@
 #ifndef _PRODUCER_H_
 #define _PRODUCER_H_
 
-void producer_init(int fd);
+void producer_init(const int* fd);
 
 #endif /* _PRODUCER_H_ */

@@ -5,10 +5,8 @@
 #include <unistd.h>
 #include <fcntl.h>
 
-static int pipe_fd = 0;
-
 static void* consumer_thread(void* a) {
-    int* fd = (int*)a;
+    const int* fd = (const int*)a;
     int bytes_read = 0;
     char buff [16];
 
@@ -24,10 +22,9 @@ static void* consumer_thread(void* a) {
     }
 }
 
-void consumer_init(int fd) {
+void consumer_init(const int* fd) {
     printf("%s\n", __FUNCTION__);
-    pipe_fd = fd;
     pthread_t consumer_thread_id;
-    int err = pthread_create( &consumer_thread_id, NULL, consumer_thread, &pipe_fd);
+    int err = pthread_create( &consumer_thread_id, NULL, consumer_thread, (void*)fd);
     printf("pthread_create %d\n", err);
 }

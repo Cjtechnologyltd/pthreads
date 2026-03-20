@@ -1,8 +1,8 @@
 /* main.c */
 #include <stdio.h>
+#include <unistd.h>
 #include "consumer.h"
 #include "producer.h"
-#include <unistd.h>
 
 int main (int argc, char* argv[]) {
     printf("%s\n", __FUNCTION__);
@@ -13,8 +13,8 @@ int main (int argc, char* argv[]) {
         return 1;
     }
 
-    consumer_init(pipe_fds[0]);
-    producer_init(pipe_fds[1]);
+    consumer_init(&pipe_fds[0]);
+    producer_init(&pipe_fds[1]);
 
     while(1) {
 
