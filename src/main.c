@@ -7,5 +7,9 @@ int main (int argc, char* argv[]) {
     printf("%s\n", __FUNCTION__);
     consumer_init();
     producer_init();
+
+    while(1) {
+        
+    }
     return 0;
 }
